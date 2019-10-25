@@ -24,6 +24,7 @@ func makeRefreshURL(domains, token string) string {
 }
 
 func tryRefreshIP(url string) {
+	log.Println("Using url: ", url)
 	resp, err := http.Get(url)
 	if err != nil {
 		log.Println("Failed to refresh IP address: ", err.Error())
@@ -43,10 +44,6 @@ func tryRefreshIP(url string) {
 
 	plainResp := strings.ReplaceAll(string(buf), "\n", " ")
 	log.Println(plainResp)
-
-	if strings.HasPrefix(plainResp, "KO") {
-		log.Println("Failed to refresh ip address, server responded with ", plainResp)
-	}
 }
 
 func main() {

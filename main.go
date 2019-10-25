@@ -20,7 +20,7 @@ func makeRefreshURL(domains, token string) string {
 		"verbose": {"true"},
 	}.Encode()
 
-	return fmt.Sprintf("https://www.duckdns.org/update/%v", query)
+	return fmt.Sprintf("https://www.duckdns.org/update?%v", query)
 }
 
 func tryRefreshIP(url string) {

@@ -24,7 +24,6 @@ func makeRefreshURL(domains, token string) string {
 }
 
 func tryRefreshIP(url string) {
-	log.Println("Using url: ", url)
 	resp, err := http.Get(url)
 	if err != nil {
 		log.Println("Failed to refresh IP address: ", err.Error())
@@ -57,6 +56,7 @@ func main() {
 	}
 
 	url := makeRefreshURL(domains, token)
+	log.Println("Using url", url)
 	tryRefreshIP(url)
 
 	ticker := time.NewTicker(5 * time.Minute)

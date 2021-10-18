@@ -1,5 +1,5 @@
 FROM golang:alpine AS build
-COPY *.go /go
+COPY *.go go.mod /go/
 RUN go build
 
 FROM alpine

@@ -1,2 +1,2 @@
-duckdns: main.go
+duckdns: *.go go.mod
 	@go build -o duckdns

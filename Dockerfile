@@ -1,7 +1,8 @@
 FROM golang:alpine AS build
-COPY *.go go.mod /go/
+WORKDIR /go/src/duckdns
+COPY *.go go.mod ./
 RUN go build
 
 FROM alpine
-COPY --from=build /go/duckdns duckdns
+COPY --from=build /go/src/duckdns/duckdns ./
 ENTRYPOINT [ "/duckdns" ]

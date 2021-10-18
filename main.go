@@ -41,8 +41,11 @@ func tryRefreshIP(url string) {
 		return
 	}
 
-	plainResp := strings.ReplaceAll(string(buf), "\n", " ")
-	log.Println(plainResp)
+	strResp := string(buf)
+	// Ignore NOCHANGE responses to avoid flooding console and logs
+	if !strings.Contains(strResp, "NOCHANGE") {
+		log.Println(strings.ReplaceAll(string(buf), "\n", " "))
+	}
 }
 
 func main() {
